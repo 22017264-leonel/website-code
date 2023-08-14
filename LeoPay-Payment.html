@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        h1 {
+            font-family: bold;
+            color: purple;
+            text-align: center;
+            width: 550px;
+
+        }
+
+        div {
+            text-align: center;
+            color: gold;
+            background-color: blueviolet;
+            width: 650px;
+            height: 500px;
+            border: 15px dashed rgb(0, 0, 0);
+            padding: 55px;
+            margin: 25px auto;
+           
+        }
+    </style>
+
+<body>
+    <div>
+
+        <p>Pay here</p>
+
+
+        <input type="text" class="sender-phone-number-field" placeholder="sender phone number" />
+
+        <br> <br>
+      
+        <input type="text" class="recepient-phone-number-field" placeholder="recipeint phone number" />
+
+        <br> <br>
+        <input type="text" class="payment-amount-field" placeholder="Enter payment amount" />
+        <br> <br>
+        <button type="submit" class="submit-now-btn">
+            submit
+        </button>
+
+        <title>One-Time Password (OTP) Verification</title>
+
+    <body>
+      <h2>Generate One-Time Password (OTP)</h2>
+      <button onclick="generateOTP()">Generate OTP</button>
+      <br><br>
+      <h2>Verify One-Time Password (OTP)</h2>
+      <form id="otpForm">
+       
+        <input type="text" id="otpInput" name="otp" maxlength="6" required placeholder="OTP">
+        <br>
+        <input type="submit" value="Verify">
+      </form>
+    
+      <script>
+        let generatedOTP = null;
+    
+        function generateOTP() {
+          //This code generates a random 6-digit OTP
+          generatedOTP = Math.floor(100000 + Math.random() * 900000);
+    
+         
+          alert("Generated OTP: " + generatedOTP);
+        }
+    
+        document.getElementById("otpForm").addEventListener("submit", function(event) {
+          event.preventDefault(); // Prevent form submission
+    
+         
+          const otpValue = document.getElementById("otpInput").value;
+    
+          // this code is to verify the OTP
+          if (otpValue === generatedOTP.toString()) {
+            alert("OTP is correct. Verification successful!");
+            window.location.href = "LeoPay-paymentconfirmation.html";
+            
+          } else {
+            alert("Invalid OTP. Verification failed!");
+        
+          }
+    
+      
+          document.getElementById("otpInput").value = '';
+        });
+        
+      </script>
+      <br> <br>
+      <button onclick="window.location.href='LeoPay-Homepage.html'">Back to home</button>
+    </div>
+</body>
+
+</html>
